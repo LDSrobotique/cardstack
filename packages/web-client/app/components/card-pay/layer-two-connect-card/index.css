@@ -6,7 +6,7 @@
 }
 
 .layer-two-connect-card__header {
-  font: 600 var(--boxel-font);
+  font: 700 var(--boxel-font);
   margin: 0;
   padding-bottom: var(--boxel-sp-xl);
   padding-left: 0;
@@ -14,7 +14,7 @@
 }
 
 .layer-two-connect-card--with-explanations .layer-two-connect-card__header {
-  font: 600 var(--boxel-font-lg);
+  font: 700 var(--boxel-font-lg);
   padding-bottom: var(--boxel-sp-xxs);
 }
 
@@ -96,7 +96,7 @@
   align-items: center;
   padding: var(--boxel-sp-xl) 0;
   font-size: 1.125rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 .layer-two-connect-card__body-header-logo {
   width: 2.5rem;

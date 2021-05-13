@@ -65,7 +65,7 @@ module('Integration | Component | transaction-amount', function (hooks) {
             @onIncomplete={{noop}}
           />
         `);
-
+    await this.pauseTest();
     assert.dom('[data-test-unlock-button]').isDisabled();
     await fillIn('[data-test-deposit-amount-input]', daiToSend);
     assert.dom('[data-test-unlock-button]').isDisabled();

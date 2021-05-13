@@ -3,9 +3,11 @@
   @isComplete={{@isComplete}}
   data-test-deposit-transaction-setup-is-complete={{@isComplete}}
 >
-  <section class="deposit-card__section">
-    <fieldset class="deposit-card__fieldset">
-      <legend class="deposit-card__legend">Deposit tokens</legend>
+  <div class="deposit-card__body">
+    <section class="deposit-card__section">
+      <ActionCardContainer::SectionTitle @tag="header">
+        Deposit tokens
+      </ActionCardContainer::SectionTitle>
       <CardPay::LabeledValue @label="From:" class="deposit-card__field">
         {{#if @isComplete}}
           <CardPay::NestedItems>
@@ -49,9 +51,11 @@
           </div>
         {{/if}}
       </CardPay::LabeledValue>
-    </fieldset>
-    <fieldset class="deposit-card__fieldset">
-      <legend class="deposit-card__legend">Receive tokens</legend>
+    </section>
+    <section class="deposit-card__section">
+      <ActionCardContainer::SectionTitle @tag="header">
+        Receive tokens
+      </ActionCardContainer::SectionTitle>
       <CardPay::LabeledValue @label="In:" class="deposit-card__field">
         <div class="deposit-card__title">{{this.layer2Network.chainName}} wallet</div>
           <CardPay::NestedItems class="deposit-card__field-info">
@@ -91,8 +95,8 @@
             </:inner>
           </CardPay::NestedItems>
       </CardPay::LabeledValue>
-    </fieldset>
-  </section>
+    </section>
+  </div>
   <Boxel::ActionChin
     @state={{if @isComplete "memorialized" "default"}}
     data-test-deposit-transaction-setup
@@ -110,7 +114,7 @@
         {{on "click" this.toggleComplete}}
         @disabled={{not @workflowSession.state.depositSourceToken}}
       >
-        Continue
+        Edit
       </m.ActionButton>
     </:memorialized>
   </Boxel::ActionChin>

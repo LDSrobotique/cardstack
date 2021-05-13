@@ -172,6 +172,7 @@ module('Acceptance | deposit', function (hooks) {
     assert
       .dom(`${post} [data-test-balance-view-only="DAI"]`)
       .containsText('250.5');
+    await this.pauseTest();
     // transaction-amount card
     assert
       .dom(postableSel(2, 2))

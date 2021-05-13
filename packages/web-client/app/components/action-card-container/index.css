@@ -1,10 +1,11 @@
 .action-card-container {
   color: var(--boxel-dark);
   font: var(--boxel-font);
-  letter-spacing: var(--boxel-lsp);
+  letter-spacing: var(--boxel-lsp-sm);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   /* box-shadow is implemented here so it follows the border-radius of this container */
   transition: box-shadow var(--boxel-transition);
+  max-width: 43.75rem; /* TODO: check in workflow */
 }
 
 .action-card-container--is-complete {

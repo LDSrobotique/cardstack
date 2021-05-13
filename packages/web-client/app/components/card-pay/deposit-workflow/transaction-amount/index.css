@@ -1,5 +1,6 @@
 .card-pay-transaction-amount__body {
-  padding: 0 var(--boxel-sp-lg);
+  margin: 0 auto;
+  padding: var(--boxel-sp-xxl) var(--boxel-sp-lg);
   display: flex;
   flex-direction: column;
 }
@@ -10,17 +11,8 @@
   font-weight: 600;
 }
 
-.card-pay-transaction-amount__input-section {
-  padding-top: var(--boxel-sp-xl);
-  padding-bottom: var(--boxel-sp-xl);
-}
-
 .card-pay-transaction-amount__input-section > * + * {
-  margin-top: var(--boxel-sp-lg);
-}
-
-.card-pay-transaction-amount__field {
-  --boxel-field-label-width: minmax(4rem, 25%);
+  margin-top: var(--boxel-sp-xl);
 }
 
 .card-pay-transaction-amount__field-contents {

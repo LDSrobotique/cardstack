@@ -1,22 +1,15 @@
-.deposit-card__section {
+.deposit-card__body {
   padding: var(--boxel-sp-xxl) var(--boxel-sp-lg);
 }
 
-.deposit-card__section > * + *,
-.deposit-card__fieldset > * + * {
+.deposit-card__section > * + * {
   margin-top: var(--boxel-sp-xxl);
 }
 
-.deposit-card__fieldset {
-  padding: 0;
-  border: none;
-}
-
-.deposit-card__legend {
-  margin: 0;
-  padding: 0;
-  font: 700 1.125rem/calc(24/18) var(--boxel-font-family);
-  letter-spacing: 0;
+.deposit-card__section + .deposit-card__section {
+  margin-top: var(--boxel-sp-lg);
+  padding-top: var(--boxel-sp-xl);
+  border-top: 1px solid var(--boxel-light-300);
 }
 
 .deposit-card__field {

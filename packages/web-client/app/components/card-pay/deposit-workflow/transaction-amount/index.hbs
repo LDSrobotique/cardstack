@@ -4,18 +4,20 @@
   @isComplete={{@isComplete}}
 >
   <section class="card-pay-transaction-amount__body">
-    <header class="card-pay-transaction-amount__body-header">
+    <ActionCardContainer::SectionTitle @tag="header">
       Choose an amount to deposit into the reserve pool
-    </header>
-    <CardPay::DepositWorkflow::TransactionAmount::BalanceView
-      @tokenSymbol={{this.currentTokenSymbol}}
-      @tokenIcon={{this.currentTokenDetails.icon}}
-      @tokenDescription={{this.currentTokenDetails.description}}
-      @address={{this.layer1Network.walletInfo.firstAddress}}
-      @balance={{format-token-amount this.currentTokenBalance}}
-      @balanceInUsd={{token-to-usd this.currentTokenSymbol this.currentTokenBalance}}
-    />
-    <div class="card-pay-transaction-amount__input-section">
+    </ActionCardContainer::SectionTitle>
+    <div>
+      <Boxel::Field @label="Funding From:">
+        <CardPay::DepositWorkflow::TransactionAmount::BalanceView
+          @tokenSymbol={{this.currentTokenSymbol}}
+          @tokenIcon={{this.currentTokenDetails.icon}}
+          @tokenDescription={{this.currentTokenDetails.description}}
+          @address={{this.layer1Network.walletInfo.firstAddress}}
+          @balance={{format-token-amount this.currentTokenBalance}}
+          @balanceInUsd={{token-to-usd this.currentTokenSymbol this.currentTokenBalance}}
+        />
+      </Boxel::Field>
       {{#if this.isUnlocked}}
       <CardPay::LabeledValue
         @label="Amount to deposit"
@@ -26,21 +28,14 @@
       <Boxel::Field
         @label="Amount to deposit"
         @fieldMode="edit"
-        class="card-pay-transaction-amount__field"
-        @labelClass="card-pay-transaction-amount__field-label"
       >
       <div class="card-pay-transaction-amount__amount-field-input-container">
         {{svg-jar this.currentTokenDetails.icon class="card-pay-transaction-amount__amount-field-currency-icon" role="presentation"}}
-        {{!--
-          .boxel-input is a hack to get the boxel styles.
-          depending on how we plan to handle validation of this input,
-          we may need to change Boxel's input to use a more DDAU pattern
-        --}}
-        <input
-          class="boxel-input card-pay-transaction-amount__amount-field-input"
+        <Boxel::Input
+          class="card-pay-transaction-amount__amount-field-input"
           id="deposit-amount-input"
           value={{this.amount}}
-          {{on "input" this.onInputAmount}}
+          @onInput={{this.onInputAmount}}
           data-test-deposit-amount-input
         />
         <div class="card-pay-transaction-amount__amount-field-currency-text">
@@ -50,11 +45,9 @@
       </Boxel::Field>
       {{/if}}
 
-      <CardPay::LabeledValue
-        @label="Approximate value"
-        @value={{concat "$ " (token-to-usd this.currentTokenSymbol this.amountAsBigNumber) " USD"}}
-      />
-
+      <Boxel::Field @label="Approximate value">
+        {{concat "$ " (token-to-usd this.currentTokenSymbol this.amountAsBigNumber) " USD"}}
+      </Boxel::Field>
     </div>
   </section>
   <Boxel::ActionChin @stepNumber={{1}} @state={{this.unlockCtaState}}>

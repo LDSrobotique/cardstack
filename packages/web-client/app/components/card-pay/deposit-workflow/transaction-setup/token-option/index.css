@@ -3,7 +3,7 @@
   grid-template-columns: auto 1fr 1fr;
   align-items: center;
   gap: var(--boxel-sp);
-  padding: var(--boxel-sp);
+  padding: var(--boxel-sp-xl) var(--boxel-sp);
   border-radius: var(--boxel-border-radius);
   box-shadow: 0 0 0 1px var(--boxel-light-400);
   transition: box-shadow var(--boxel-transition);

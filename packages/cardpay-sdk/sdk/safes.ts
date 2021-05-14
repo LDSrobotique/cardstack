@@ -7,7 +7,7 @@ import { getAddress } from '../contracts/addresses';
 import { getConstant, ZERO_ADDRESS } from './constants';
 import ExchangeRate from './exchange-rate';
 
-type SafeInfo = DepotInfo | PrepaidCardInfo;
+export type SafeInfo = DepotInfo | PrepaidCardInfo;
 interface DepotInfo {
   isPrepaidCard: false;
   address: string;

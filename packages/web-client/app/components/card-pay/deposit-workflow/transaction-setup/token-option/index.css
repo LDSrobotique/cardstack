@@ -45,6 +45,7 @@
 }
 
 .token-option__icon {
+  flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
   object-fit: contain;

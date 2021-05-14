@@ -1,30 +1,33 @@
-<div class="card-pay-token-balance-view" ...attributes>
-  {{svg-jar @tokenIcon class="card-pay-token-balance-view__currency-icon" role="presentation"}}
-  <div class="card-pay-token-balance-view__currency-details">
-    <span class="card-pay-token-balance-view__currency-details-name" data-test-source-token={{@tokenSymbol}}>
-      {{@tokenSymbol}}
-    </span>
-    <span class="card-pay-token-balance-view__currency-details-description">
-      {{@tokenDescription}}
-    </span>
-    <span class="card-pay-token-balance-view__currency-details-address">
-      {{@address}}
-    </span>
-  </div>
-
-  <div class="card-pay-token-balance-view__balance">
-    <span class="card-pay-token-balance-view__balance-header">
-      Balance
-    </span>
-    <span class="card-pay-token-balance-view__balance-amount">
-      {{@balance}} {{@tokenSymbol}}
-    </span>
-    <span class="card-pay-token-balance-view__balance-equivalent">
-      {{#if @balanceInUsd}}
-        ≈ $ {{@balanceInUsd}} USD
-      {{else}}
-        <LoadingIndicator class="card-pay-token-balance-view__loading-indicator"/>
-      {{/if}}
-    </span>
-  </div>
-</div>
+<details class="balance-view" ...attributes>
+  <summary class="balance-view__summary">
+    <span>{{@wallet}} wallet</span>
+    <span class="balance-view__summary-balance">{{@balance}} {{@tokenSymbol}}</span>
+    <div class="balance-view__marker">
+      {{svg-jar "caret-right" class="balance-view__marker-icon" role="presentation"}}
+    </div>
+  </summary>
+  <CardPay::NestedItems class="balance-view__details">
+    <:outer>
+      <div class="deposit-card__address">
+        {{@address}}
+      </div>
+    </:outer>
+    <:inner>
+      <div class="deposit-card__icon-group">
+        {{svg-jar @tokenIcon class="deposit-card__icon" role="presentation" width="40" height="40"}}
+        <div>
+          <div class="deposit-card__title-lg">
+            {{@balance}} {{@tokenSymbol}}
+          </div>
+          <div class="deposit-card__text-sm">
+            {{#if @balanceInUsd}}
+              ≈ $ {{@balanceInUsd}} USD
+            {{else}}
+              <LoadingIndicator width="20" height="20" />
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </:inner>
+  </CardPay::NestedItems>
+</details>

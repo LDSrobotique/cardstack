@@ -1,4 +1,7 @@
 .card-pay-transaction-amount__body {
+  --tx-from-label-height: 3.125rem; /* 50px */
+  --tx-input-height: 3.75rem; /* 60px */
+
   margin: 0 auto;
   padding: var(--boxel-sp-xxl) var(--boxel-sp-lg);
   display: flex;
@@ -12,7 +15,7 @@
 }
 
 .card-pay-transaction-amount__input-section > * + * {
-  margin-top: var(--boxel-sp-xl);
+  margin-top: var(--boxel-sp-lg);
 }
 
 .card-pay-transaction-amount__field-contents {
@@ -26,17 +29,31 @@
   margin-right: 0.5rem;
 }
 
+.transaction-amount__from-label {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  height: var(--tx-from-label-height);
+}
+
 .card-pay-transaction-amount__amount-field-input-container {
-  --input-currency-icon-size: 1.25rem;
+  --input-currency-icon-size: 2.5rem;
   --input-currency-text-width: 5ch;
   --input-currency-icon-space: var(--boxel-sp-xs);
   --input-currency-text-space: var(--boxel-sp-sm);
+
   position: relative;
+  font-size: 1.25rem; /* 20px */
+  line-height: calc(27/20);
+  letter-spacing: var(--boxel-lsp-xs);
 }
 
 .card-pay-transaction-amount__amount-field-input {
+  height: var(--tx-input-height);
   padding-left: calc(var(--input-currency-icon-size) + var(--input-currency-icon-space) * 2);
   padding-right: calc(var(--input-currency-text-width) + var(--input-currency-text-space) * 2);
+  font: inherit;
+  letter-spacing: inherit;
 }
 
 .card-pay-transaction-amount__amount-field-currency-icon {
@@ -61,4 +78,30 @@
 
 .card-pay-transaction-amount__deposited-memorialized-cta {
   border-top: 1px solid var(--boxel-light-600);
+}
+
+/* After unlocking */
+.tx-amount-unlock--memorialized .boxel-field {
+  grid-template-columns: 1fr;
+  row-gap: var(--boxel-sp-xxs);
+}
+
+.tx-amount-unlock--memorialized .transaction-amount__from-field {
+  margin-bottom: var(--boxel-sp);
+}
+
+.tx-amount-unlock--memorialized .transaction-amount__from-label {
+  height: unset;
+}
+
+.tx-amount-unlock--memorialized .card-pay-transaction-amount__input-section > * + * {
+  margin-top: unset;
+}
+
+.tx-amount-unlock--memorialized .card-pay-labeled-value__contents {
+  justify-content: center;
+}
+
+.tx-amount-unlock--memorialized .transaction-amount__usd-field {
+  justify-items: center;
 }

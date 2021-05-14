@@ -1,5 +1,5 @@
 <ActionCardContainer
-  class="card-pay-transaction-amount"
+  class={{cn "card-pay-transaction-amount" (concat "tx-amount-unlock--" this.unlockCtaState)}}
   @header="Deposit Amount"
   @isComplete={{@isComplete}}
 >
@@ -7,13 +7,18 @@
     <ActionCardContainer::SectionTitle @tag="header">
       Choose an amount to deposit into the reserve pool
     </ActionCardContainer::SectionTitle>
-    <div>
-      <Boxel::Field @label="Funding From:">
+    <div class="card-pay-transaction-amount__input-section">
+      <Boxel::Field
+        class="transaction-amount__from-field"
+        @label="Funding From:"
+        @labelClass="transaction-amount__from-label"
+      >
         <CardPay::DepositWorkflow::TransactionAmount::BalanceView
+          @wallet={{this.layer1Network.chainName}}
+          @address={{this.layer1Network.walletInfo.firstAddress}}
           @tokenSymbol={{this.currentTokenSymbol}}
           @tokenIcon={{this.currentTokenDetails.icon}}
           @tokenDescription={{this.currentTokenDetails.description}}
-          @address={{this.layer1Network.walletInfo.firstAddress}}
           @balance={{format-token-amount this.currentTokenBalance}}
           @balanceInUsd={{token-to-usd this.currentTokenSymbol this.currentTokenBalance}}
         />
@@ -45,7 +50,11 @@
       </Boxel::Field>
       {{/if}}
 
-      <Boxel::Field @label="Approximate value">
+      <Boxel::Field
+        class="transaction-amount__usd-field"
+        @label="Approximate value"
+        @labelClass={{if (eq this.unlockCtaState "memorialized") "boxel-sr-only"}}
+      >
         {{concat "$ " (token-to-usd this.currentTokenSymbol this.amountAsBigNumber) " USD"}}
       </Boxel::Field>
     </div>

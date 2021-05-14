@@ -252,6 +252,7 @@ module('Acceptance | deposit', function (hooks) {
       )
       .exists();
     assert.dom(`${post} [data-test-blockscout-button]`).doesNotExist();
+    await this.pauseTest();
 
     // layer2Service.test__simulateTokensBridged();
     // assert.dom(`${message} [data-test-step-2="complete"]`);

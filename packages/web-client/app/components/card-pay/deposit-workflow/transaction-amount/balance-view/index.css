@@ -1,70 +1,77 @@
-.card-pay-token-balance-view {
-  display: flex;
-  align-items: start;
-  padding: var(--boxel-sp);
-  box-shadow: 0 0 0 2px var(--boxel-light-400);
+
+.balance-view {
+  --details-summary-height: 3.125rem; /* 50px */
+  --details-open-height: 11.5rem; /* ~184px */
+
+  position: relative;
+  border: 1px solid var(--boxel-light-400);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
   border-radius: var(--boxel-border-radius);
+  height: var(--details-summary-height);
+  overflow: hidden;
+  transition: height var(--boxel-transition);
 }
 
-.card-pay-token-balance-view__currency-details, .card-pay-token-balance-view__balance {
-  flex-shrink: 0;
+.balance-view[open] {
+  height: var(--details-open-height);
+  overflow: auto;
+}
+
+.balance-view__summary {
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  gap: var(--boxel-sp);
+  padding: var(--boxel-sp-sm) var(--boxel-sp);
+  font: 600 var(--boxel-font-sm);
+  line-height: calc(20/13);
+  transition: padding var(--boxel-transition),
+    font var(--boxel-transition);
 }
 
-.card-pay-token-balance-view__currency-icon {
-  flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
-  object-fit: contain;
-  margin-right: var(--boxel-sp-sm);
-  margin-bottom: auto;
-}
-
-.card-pay-token-balance-view__currency-details-name {
+.balance-view[open] .balance-view__summary {
+  padding: var(--boxel-sp-xl) var(--boxel-sp-lg) 0;
   font: 600 var(--boxel-font);
-  color: var(--boxel-dark);
 }
 
-.card-pay-token-balance-view__currency-details-description {
+.balance-view__details {
+  padding: 0 var(--boxel-sp-lg) var(--boxel-sp-xl);
+}
+
+.balance-view[open] .balance-view__summary-balance {
+  display: none;
+}
+
+.balance-view__marker::before {
+  display: block;
+  content: "Show";
+}
+
+.balance-view[open] .balance-view__marker::before {
+  content: "Hide";
+}
+
+.balance-view__marker {
+  position: absolute;
+  right: var(--boxel-sp-sm);
+  top: var(--boxel-sp-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font: var(--boxel-font-sm);
-  color: var(--boxel-purple-500);
-  margin-bottom: var(--boxel-sp-xxxs);
-}
-
-.card-pay-token-balance-view__currency-details-address {
-  font-family: "Roboto Mono";
-  font-size: var(--boxel-font-size-sm);
-  line-height: 1.125rem;
   letter-spacing: var(--boxel-lsp-sm);
-  color: var(--boxel-purple-500);
-  max-width: 22ch;
-  word-break: break-all;
 }
 
-.card-pay-token-balance-view__balance {
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
+.balance-view__marker-icon {
+  margin-left: var(--boxel-sp-xs);
+  transform: rotate(90deg);
 }
 
-.card-pay-token-balance-view__balance-header {
+.balance-view[open] .balance-view__marker-icon {
+  transform: rotate(-90deg);
+}
+
+/* .card-pay-token-balance-view__balance-header {
   font: var(--boxel-font-sm);
   color: var(--boxel-purple-500);
   margin-bottom: var(--boxel-sp-xxxs);
-}
-
-.card-pay-token-balance-view__balance-amount {
-  font: var(--boxel-font);
-  color: var(--boxel-dark);
-}
-
-.card-pay-token-balance-view__balance-equivalent {
-  font: var(--boxel-font-sm);
-  color: var(--boxel-purple-400);
-}
-
-.card-pay-token-balance-view__loading-indicator {
-  width: var(--boxel-sp-sm);
-  height: var(--boxel-sp-sm);
-}
+} */
